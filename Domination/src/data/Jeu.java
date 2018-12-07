@@ -1,26 +1,32 @@
 package data;
 
-public class Jeu {
+public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		Player.coloR();
-		//Etape 1: Charger fichier
+		Jeu monJeu = new Jeu();
 		
+		//Etape 1: Charger fichier
+		monJeu.chargerFichierDomino("src/ressources/dominos.csv");
 		
 		//Etape 2: Nombre de joueurs et sélection des rois. Choix couleur
 		
+		monJeu.definirNombreJoueurs();
 		
-		//Etape 3: Création plateau
+		monJeu.creerDesJoueurs(); //creer le plateau
 		
-		//Etape 4: Débuter partie
+		monJeu.definirOrdreDesJoueurs(); 
 		
-		//Etape 5: Tour
+		while (monJeu.enCour()) {
+			
+			monJeu.joueurSuivant(); //tant qu'on peut joueur , joueur suivant
+			
+					
+		}
 		
-		//Etape 6: Points
+		monJeu.afficheResultat(); //calcul resultat
 		
-		//Etape 7: Fin du jeu
+
 	}
 
 }
