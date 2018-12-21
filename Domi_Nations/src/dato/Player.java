@@ -20,6 +20,9 @@ public class Player {
 
 		String answer = (String) JOptionPane.showInputDialog(null, "Nombre de joueurs ?", "Choix",
 				JOptionPane.QUESTION_MESSAGE, null, answers, null);
+		if (Turn.isNullOrEmpty(answer)) {
+			System.exit(0);
+		}
 
 		int NombreJoueurs = Integer.parseInt(answer);
 		System.out.println(NombreJoueurs);
@@ -41,9 +44,14 @@ public class Player {
 		for (int i = 1; i <= s; i++) {
 			String answer = (String) JOptionPane.showInputDialog(null, "Choisissez une couleur !", "Choix couleur",
 					JOptionPane.QUESTION_MESSAGE, null, a, null);
+			if (Turn.isNullOrEmpty(answer)) {
+				System.exit(0);
+			}
 			while(reponse.contains(answer)){
 				answer = (String)JOptionPane.showInputDialog(null, "Choisissez une couleur !","Choix couleur",JOptionPane.QUESTION_MESSAGE,null,a,null);
-
+				if (Turn.isNullOrEmpty(answer)) {
+					System.exit(0);
+				}
 				
 			}
 			Joueurs.put("Joueur " + String.valueOf(i), answer);

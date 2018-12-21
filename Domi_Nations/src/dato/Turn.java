@@ -50,24 +50,31 @@ public class Turn {
 			numeroTour = numeroTour + 1;
 			System.out.println("tour " + (numeroTour) + " : " + tourlist);
 			ArrayList<String> reponse = new ArrayList<String>();
-			while (k < players) {			
+			while (k < players) {
 				// System.out.println(random);
 				String[] tourtable = new String[tourlist.size()];
 				for (int q = 0; q < tourlist.size(); q++)
 					tourtable[q] = tourlist.get(q);
 				int[] joueur = new int[players];
-				for (int g=0;g<players;g++) {
-					joueur[g]=g+1;
+				for (int g = 0; g < players; g++) {
+					joueur[g] = g + 1;
 				}
-				String answer = (String) JOptionPane.showInputDialog(null, "Joueur ="+joueur[k] + " Choisissez un domino ?",
-						"Choix", JOptionPane.QUESTION_MESSAGE, null, tourtable, null);
-				
-				while(reponse.contains(answer)){
-					answer = (String)JOptionPane.showInputDialog(null, "Choisissez un domino disponible !","Choix",JOptionPane.QUESTION_MESSAGE,null,tourtable,null);
-					
+				String answer = (String) JOptionPane.showInputDialog(null,
+						"Joueur =" + joueur[k] + " Choisissez un domino ?", "Choix", JOptionPane.QUESTION_MESSAGE, null,
+						tourtable, null);
+
+				while (reponse.contains(answer)) {
+					answer = (String) JOptionPane.showInputDialog(null, "Choisissez un domino disponible !", "Choix",
+							JOptionPane.QUESTION_MESSAGE, null, tourtable, null);
+					if (Turn.isNullOrEmpty(answer)) {
+						System.exit(0);
+					}
 
 				}
-				System.out.println(answer);
+				if (Turn.isNullOrEmpty(answer)) {
+					System.exit(0);
+				}
+				System.out.println("answer = " + answer);
 				reponse.add(answer);
 
 				k++;
@@ -75,6 +82,12 @@ public class Turn {
 			}
 		}
 
+	}
+
+	public static boolean isNullOrEmpty(String str) {
+		if (str != null && !str.isEmpty())
+			return false;
+		return true;
 	}
 
 }
