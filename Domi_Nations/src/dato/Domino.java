@@ -46,7 +46,7 @@ public class Domino {
 		return (mapdomino);
 	}
 
-	public static void splitDomino(Map<String, ArrayList<String>> A) {
+	public static Map<String, ArrayList<String>> splitDomino(Map<String, ArrayList<String>> A) {
 
 		Map<String, ArrayList<String>> FullDomino = A;
 		Map<String, ArrayList<String>> SplitDomino = new TreeMap<String, ArrayList<String>>();
@@ -69,7 +69,7 @@ public class Domino {
 			SplitDomino.put(d, PartieDominoD);
 
 		}
-		System.out.println(SplitDomino);
+		return SplitDomino;
 
 	}
 
