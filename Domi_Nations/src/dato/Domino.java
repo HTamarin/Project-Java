@@ -46,11 +46,11 @@ public class Domino {
 		return (mapdomino);
 	}
 
-	public static Map<String, ArrayList<String>> splitDomino(Map<String, ArrayList<String>> A) {
-
-		Map<String, ArrayList<String>> FullDomino = A;
+	public static Map<String, ArrayList<String>> splitDomino() {
+		
+		Map<String, ArrayList<String>> FullDomino = Domino.domino();
 		Map<String, ArrayList<String>> SplitDomino = new TreeMap<String, ArrayList<String>>();
-		Set<String> keys = A.keySet();
+		Set<String> keys = FullDomino.keySet();
 		ArrayList<String> cles = new ArrayList<String>(keys);
 		System.out.println(cles);
 		for (int i = 0; i < cles.size(); i++) {
@@ -71,6 +71,21 @@ public class Domino {
 		}
 		return SplitDomino;
 
+	}
+	public static String domaine(String a) {
+		Map<String, ArrayList<String>> mapDominos = splitDomino();
+		ArrayList<String> domino= mapDominos.get(a);
+		String domaine = domino.get(1);
+		return domaine;
+		
+	}
+	public static String couronne(String a) {
+		Map<String, ArrayList<String>> mapDominos = splitDomino();
+		ArrayList<String> domino= mapDominos.get(a);
+
+		String couronne = domino.get(0);
+		return couronne;
+		
 	}
 
 }
