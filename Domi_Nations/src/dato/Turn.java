@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Turn {
 
-	public static void turn(int s) {
+	public static Map<String, String[][]> turn(int s , Map<String, String[][]> plateau) {
 
 		int r = 0;
 		int players = s; // Pour recuperer la valeur et ne pas lancer des cases
@@ -19,7 +19,7 @@ public class Turn {
 
 		Map<String, ArrayList<String>> ListeDomRed = Regle.regleJoueur(players);
 		Set<String> keys = ListeDomRed.keySet();
-
+		Map<String, String[][]> mapPlateau = new HashMap<String, String[][]>();
 		ArrayList<String> cles = new ArrayList<String>(keys);
 		List<String> newcles = new ArrayList<String>(cles);
 		for (int i = 0; i < 3; i++) {
@@ -52,6 +52,7 @@ public class Turn {
 			ArrayList<String> reponse = new ArrayList<String>();
 			while (k < players) {
 				// System.out.println(random);
+				ArrayList<String> tourDominoJoueur = new ArrayList<String>();
 				String[] tourtable = new String[tourlist.size()];
 				for (int q = 0; q < tourlist.size(); q++)
 					tourtable[q] = tourlist.get(q);
@@ -62,6 +63,8 @@ public class Turn {
 				String answer = (String) JOptionPane.showInputDialog(null,
 						"Joueur =" + joueur[k] + " Choisissez un domino ?", "Choix", JOptionPane.QUESTION_MESSAGE, null,
 						tourtable, null);
+				String joueurnbr = "joueur" + joueur[k]; 
+				
 
 				while (reponse.contains(answer)) {
 					answer = (String) JOptionPane.showInputDialog(null, "Choisissez un domino disponible !", "Choix",
@@ -74,6 +77,10 @@ public class Turn {
 				if (Turn.isNullOrEmpty(answer)) {
 					System.exit(0);
 				}
+				System.out.println("joueurnbr = "+joueurnbr);
+				tourDominoJoueur.add(joueurnbr);
+				tourDominoJoueur.add(answer);
+				mapPlateau = Matrice.ajouterDominoPlateau(tourDominoJoueur,plateau);
 				System.out.println("answer = " + answer);
 				reponse.add(answer);
 
@@ -81,7 +88,7 @@ public class Turn {
 
 			}
 		}
-
+return mapPlateau;
 	}
 
 	public static boolean isNullOrEmpty(String str) {

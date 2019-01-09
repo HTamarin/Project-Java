@@ -50,8 +50,7 @@ public class Matrice {
 
 	}
 
-	public static boolean ajouterDominoPlateau(ArrayList<String> tourDomino, Map<String, String[][]> plateau) {
-		boolean condition;
+	public static Map<String, String[][]> ajouterDominoPlateau(ArrayList<String> tourDomino, Map<String, String[][]> plateau) {
 		String joueur = tourDomino.get(0);
 		String domino = tourDomino.get(1);
 		ArrayList<Integer> caseDispo = new ArrayList<Integer>();
@@ -787,12 +786,9 @@ public class Matrice {
 			maxyj4 = maxy;
 			minyj4 = miny;
 		}
-		condition =true;
 	}
-		else {
-			condition =false;
-		}
-		return condition;
+		plateau.put(joueur,plateauJoueur);
+		return plateau;
 	}
 
 }

@@ -3,10 +3,19 @@ package dato;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Main {
 
 	public static void main(String[] args) {
+		Map<String, String[][]> plateau = new TreeMap<String, String[][]>();
+		plateau.put("joueur1",Matrice.matrix());
+		plateau.put("joueur2",Matrice.matrix());
+		plateau.put("joueur3",Matrice.matrix());
+		plateau.put("joueur4",Matrice.matrix());
+		
+
+		
 		// TODO Auto-generated method stub
 
 		/*Jeu monJeu = new Jeu();
@@ -37,7 +46,7 @@ public class Main {
 		System.out.println(full);
 		int n=Player.setPlayerCount();
 		Player.coloR(n);
-		Turn.turn(n);
+		Map<String, String[][]> PlateauJoueur = Turn.turn(n,plateau); //tu mets plateau.get(joueur1) ça te donne le plateau du jour 1 par exemple
 	}
 
 }
