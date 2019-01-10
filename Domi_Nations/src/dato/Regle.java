@@ -22,9 +22,9 @@ public class Regle {
         boolean equals;
         if (e == 2) {
 
-            int MaxDominos = 24; // Nombre total de dominos
-            int[] random = new int[MaxDominos];
-            while (i != MaxDominos) {
+            int maxDominos = 24; // Nombre total de dominos
+            int[] random = new int[maxDominos];
+            while (i != maxDominos) {
                 random[i] = ((int) (Math.random() * 47)) + 1; // Valeure aléatoire entre 1 et 48
                 equals = false;
                 for (int j = 0; j != i; j++) { // Verification des doublons
@@ -49,9 +49,9 @@ public class Regle {
         }
         if (e == 3) {
             // même chose que precedement , sauf que MaxDominos = 36
-            int MaxDominos = 36;
-            int[] random = new int[MaxDominos];
-            while (i != MaxDominos) {
+            int maxDominos = 36;
+            int[] random = new int[maxDominos];
+            while (i != maxDominos) {
                 random[i] = ((int) (Math.random() * 47)) + 1;
                 equals = false;
                 for (int j = 0; j != i; j++) {
