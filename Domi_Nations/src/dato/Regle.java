@@ -114,11 +114,10 @@ public class Regle {
                         tableaudomaine = null;
                     }
 
-                    for(int j=0; j<cordonees.size()/2; j++ ){//Parcours la liste cordonees, (2 par deux)
+                    for(int j=0; j<cordonees.size(); j++ ){//Parcours la liste cordonees, (2 par deux)
 
                         ArrayList<int[]> couple = new ArrayList<>();
-                        couple.add((cordonees.get(2*j)));
-                        couple.add((cordonees.get(2*j+1))); //decoupe la liste en séprarant les couples
+                        couple.add((cordonees.get(j))); //decoupe la liste en séprarant les couples
                         int[] x = couple[0];//On redefini x à x //Problème!!!!!
                         int[] y = couple[1];//On redefini y à y
 
