@@ -135,7 +135,7 @@ public class Regle {
                         couplereferant.add(new int[]{x+1,y});
                         couplereferant.add(new int[]{x,y-1});
                         couplereferant.add(new int[]{x,y+1});
-
+                        int valrep = 0;
                         for(int k=0; k<4; k++ ){//Taille de couple referant
                             if(cordonees.contains(couplereferant.get(k))){
                                 int xans = couplereferant.get(k)[0];
@@ -147,7 +147,10 @@ public class Regle {
                                 condition = false;
                             }
                             else{
-                             repete = false   
+                                valrep++;
+                                if(valrep==3){
+                                    repete = false   
+                                }
                             }
                         }
                         }
