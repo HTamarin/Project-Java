@@ -113,14 +113,21 @@ public class Regle {
 
                         tableaudomaine = null;
                     }
-
+                    boolean condition = true;
+                    boolean repete = true;
                     for(int j=0; j<cordonees.size(); j++ ){//Parcours la liste cordonees, (2 par deux)
 
                         ArrayList<int[]> couple = new ArrayList<>();
+                        
                         int[] couple = (cordonees.get(j)); //decoupe la liste en séprarant les couples
+                        while(repete){
+                        if (condition){
                         int x = couple[0];//On redefini x à x //Problème!!!!!
                         int y = couple[1];//On redefini y à y
+                        }
 
+                        couple[0] = x;
+                        couple[1] = y;
                         caseutilise.add(couple);
 
                         ArrayList<int[]> couplereferant = new ArrayList<>();//Liste des couples referant
@@ -137,9 +144,12 @@ public class Regle {
                                 couplereferant.remove(couplereferant.get(k));
                                 x = xans;
                                 y = yans;
-
+                                condition = false;
                             }
-
+                            else{
+                             repete = false   
+                            }
+                        }
                         }
 
                     }
