@@ -125,10 +125,9 @@ public class Regle {
                         int x = couple[0];//On redefini x à x //Problème!!!!!
                         int y = couple[1];//On redefini y à y
                         }
-
-                        couple[0] = x;
-                        couple[1] = y;
-                        caseutilise.add(couple);
+                        int [] xy = {x,y};
+                            
+                        caseutilise.add(xy);
 
                         ArrayList<int[]> couplereferant = new ArrayList<>();//Liste des couples referant
                         couplereferant.add(new int[]{x-1,y});
