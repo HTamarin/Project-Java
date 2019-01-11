@@ -72,19 +72,35 @@ public class Domino {
 		return SplitDomino;
 
 	}
-	public static String domaine(String a) {
+	public static String splitdomaine(String a) {
 		Map<String, ArrayList<String>> mapDominos = splitDomino();
 		ArrayList<String> domino= mapDominos.get(a);
 		String domaine = domino.get(1);
 		return domaine;
 		
 	}
-	public static String couronne(String a) {
+	public static String[] domaine(String a) {
+		Map<String, ArrayList<String>> mapDominos = domino();
+		String[] domaine = new String[2];
+		domaine[0]=mapDominos.get(a).get(1);
+		domaine[1]=mapDominos.get(a).get(3);
+		return domaine;
+		
+	}
+	public static String splitcouronne(String a) {
 		Map<String, ArrayList<String>> mapDominos = splitDomino();
 		ArrayList<String> domino= mapDominos.get(a);
 
 		String couronne = domino.get(0);
 		return couronne;
+		
+	}
+	public static String[] couronne(String a) {
+		Map<String, ArrayList<String>> mapDominos = domino();
+		String[] domaine = new String[2];
+		domaine[0]=mapDominos.get(a).get(0);
+		domaine[1]=mapDominos.get(a).get(2);
+		return domaine;
 		
 	}
 
