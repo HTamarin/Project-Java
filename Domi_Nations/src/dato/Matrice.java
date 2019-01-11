@@ -364,7 +364,7 @@ public class Matrice {
 				}
 			}
 		}
-		if (!caseDispo.isEmpty()) {
+		if (caseDispo.size()!=0) {
 		String[] answers = { "Droite", "Gauche" };
 
 		ArrayList<String> Answer = new ArrayList<>();
@@ -394,14 +394,14 @@ public class Matrice {
 					+ " y:" + String.valueOf(caseDispo.get(i + 1)));
 			k++;
 		}
-		String[] caseaupif = new String[caseDispo.size() / 2];
-		Map<String, Integer> mapaupif = new HashMap<String, Integer>();
+		String[] casestring = new String[caseDispo.size() / 2];
+		Map<String, Integer> mapemplacement = new HashMap<String, Integer>();
 		for (int j = 0; j < caseDispo.size() / 2; j++) {
-			caseaupif[j] = String.valueOf(j + 1);
-			mapaupif.put(String.valueOf(j + 1), j + 1);
+			casestring[j] = String.valueOf(j + 1);
+			mapemplacement.put(String.valueOf(j + 1), j + 1);
 		}
 		String emplacement = (String) JOptionPane.showInputDialog(null, "Quel emplacement choisissez vous ?", "Choix",
-				JOptionPane.QUESTION_MESSAGE, null, caseaupif, null);
+				JOptionPane.QUESTION_MESSAGE, null, casestring, null);
 		if (Turn.isNullOrEmpty(emplacement)) {
 			System.exit(0);
 		}
@@ -416,20 +416,20 @@ public class Matrice {
 			debut++;
 
 		}
-		String l = String.valueOf(mapaupif.get(emplacement) - 1);
-		ArrayList<Integer> poil = mapcouple.get(l);
+		String l = String.valueOf(mapemplacement.get(emplacement) - 1);
+		ArrayList<Integer> place = mapcouple.get(l);
 		System.out.println(listeduo);
 		System.out.println("l=" + l);
 		System.out.println("emp=" + emplacement);
 
-		plateauJoueur[caseDispo.get(poil.get(0))][caseDispo.get(poil.get(1))] = partieDomino1;
+		plateauJoueur[caseDispo.get(place.get(0))][caseDispo.get(place.get(1))] = partieDomino1;
 
 		//////////////////////////////////////////////////////
 
 		ArrayList<Integer> case2Dispo = new ArrayList<Integer>();
 		System.out.println("waypoint5");
-		int i = caseDispo.get(poil.get(0));
-		int j = caseDispo.get(poil.get(1));
+		int i = caseDispo.get(place.get(0));
+		int j = caseDispo.get(place.get(1));
 		if (i > maxx) {
 			maxx = i;
 		}
@@ -709,7 +709,7 @@ public class Matrice {
 				}
 			}
 		}
-
+		if (case2Dispo.size()!=0) {
 		System.out.println("Les emplacements disponibles sont : ");
 		int k1 = 1;
 
@@ -718,14 +718,14 @@ public class Matrice {
 					+ " y:" + String.valueOf(case2Dispo.get(i1 + 1)));
 			k1++;
 		}
-		String[] caseaupif1 = new String[case2Dispo.size() / 2];
-		Map<String, Integer> mapaupif1 = new HashMap<String, Integer>();
+		String[] casestring1 = new String[case2Dispo.size() / 2];
+		Map<String, Integer> mapemplacement1 = new HashMap<String, Integer>();
 		for (int j1 = 0; j1 < case2Dispo.size() / 2; j1++) {
-			caseaupif1[j1] = String.valueOf(j1 + 1);
-			mapaupif1.put(String.valueOf(j1 + 1), j1 + 1);
+			casestring1[j1] = String.valueOf(j1 + 1);
+			mapemplacement1.put(String.valueOf(j1 + 1), j1 + 1);
 		}
 		String emplacement1 = (String) JOptionPane.showInputDialog(null, "Quel emplacement choisissez vous ?", "Choix",
-				JOptionPane.QUESTION_MESSAGE, null, caseaupif1, null);
+				JOptionPane.QUESTION_MESSAGE, null, casestring1, null);
 		if (Turn.isNullOrEmpty(emplacement1)) {
 			System.exit(0);
 		}
@@ -740,13 +740,13 @@ public class Matrice {
 			debut1++;
 
 		}
-		String l1 = String.valueOf(mapaupif1.get(emplacement1) - 1);
-		ArrayList<Integer> poil1 = mapcouple1.get(l1);
+		String l1 = String.valueOf(mapemplacement1.get(emplacement1) - 1);
+		ArrayList<Integer> place1 = mapcouple1.get(l1);
 		System.out.println(listeduo1);
 		System.out.println("l=" + l1);
 		System.out.println("emp=" + emplacement1);
-		int x = case2Dispo.get(poil1.get(0));
-		int y = case2Dispo.get(poil1.get(1));
+		int x = case2Dispo.get(place1.get(0));
+		int y = case2Dispo.get(place1.get(1));
 		if (x > maxx) {
 			maxx = x;
 		}
@@ -759,7 +759,7 @@ public class Matrice {
 		if (y < miny) {
 			miny = y;
 		}
-		plateauJoueur[case2Dispo.get(poil1.get(0))][case2Dispo.get(poil1.get(1))] = partieDomino2;
+		plateauJoueur[case2Dispo.get(place1.get(0))][case2Dispo.get(place1.get(1))] = partieDomino2;
 		affichePlateau(plateauJoueur);
 		System.out.println("xmax= " + maxx + " xmin= " + minx + " ymax= " + maxy + " ymin= " + miny);
 		if (joueur.equals("joueur1")) {
@@ -785,6 +785,7 @@ public class Matrice {
 			minxj4 = minx;
 			maxyj4 = maxy;
 			minyj4 = miny;
+		}
 		}
 	}
 		plateau.put(joueur,plateauJoueur);

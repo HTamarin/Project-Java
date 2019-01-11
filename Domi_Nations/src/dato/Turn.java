@@ -1,13 +1,14 @@
 package dato;
 
+import java.awt.Container;
 import java.util.*;
 
 import javax.swing.JOptionPane;
 
 public class Turn {
 
-	public static Map<String, String[][]> turn(int s , Map<String, String[][]> plateau) {
-
+	public static ArrayList<ArrayList<String>> turn(int s) {
+		
 		int r = 0;
 		int players = s; // Pour recuperer la valeur et ne pas lancer des cases
 		if (players == 2 || players == 4) {
@@ -19,7 +20,7 @@ public class Turn {
 
 		Map<String, ArrayList<String>> ListeDomRed = Regle.regleJoueur(players);
 		Set<String> keys = ListeDomRed.keySet();
-		Map<String, String[][]> mapPlateau = new HashMap<String, String[][]>();
+		ArrayList<ArrayList<String>> listTour = new ArrayList<ArrayList<String>>();
 		ArrayList<String> cles = new ArrayList<String>(keys);
 		List<String> newcles = new ArrayList<String>(cles);
 		for (int i = 0; i < 3; i++) {
@@ -46,51 +47,94 @@ public class Turn {
 				String q = String.valueOf(tourtab[j]);
 				tourlist.add(q);
 			}
-			int k = 0;
 			numeroTour = numeroTour + 1;
 			System.out.println("tour " + (numeroTour) + " : " + tourlist);
+			listTour.add(tourlist);
+			
+		}
+		return listTour;
+	}
+	
+	public static Map<String, String[][]> choixDomino(int i, int n , ArrayList<String> ordrejoueur, ArrayList<ArrayList<String>> dominotour  , Map<String, String[][]> plateau) {
+		int k = 0;
+		Map<String, String[][]> mapPlateau = new HashMap<String, String[][]>();
+
+		 ArrayList<String> joueurs = ordrejoueur;
+			Collections.shuffle(joueurs);
+			Collections.shuffle(joueurs);
+			System.out.println("joueurs = "+joueurs);
+		 ArrayList<ArrayList<String>> dominos=dominotour;
+		 int players = n;
+		 if (n==2) {
+			 players =4;
+		 }
+		 System.out.println(dominos);
 			ArrayList<String> reponse = new ArrayList<String>();
-			while (k < players) {
-				// System.out.println(random);
-				ArrayList<String> tourDominoJoueur = new ArrayList<String>();
-				String[] tourtable = new String[tourlist.size()];
-				for (int q = 0; q < tourlist.size(); q++)
-					tourtable[q] = tourlist.get(q);
-				int[] joueur = new int[players];
-				for (int g = 0; g < players; g++) {
-					joueur[g] = g + 1;
-				}
-				String answer = (String) JOptionPane.showInputDialog(null,
-						"Joueur =" + joueur[k] + " Choisissez un domino ?", "Choix", JOptionPane.QUESTION_MESSAGE, null,
-						tourtable, null);
-				String joueurnbr = "joueur" + joueur[k]; 
-				
+			ArrayList<String>tourlist = dominos.get(i);
+		while (k < players) {
+			// System.out.println(random);
+			ArrayList<String> tourDominoJoueur = new ArrayList<String>();
+			String[] tourtable = new String[tourlist.size()];
+			for (int q = 0; q < tourlist.size(); q++)
+				tourtable[q] = tourlist.get(q);
+			int[] joueur = new int[players];
+			for (int g = 0; g < players; g++) {
+				joueur[g] = g + 1;
+			}
+			String answer = (String) JOptionPane.showInputDialog(null,
+					joueurs.get(k) + " Choisissez un domino ?", "Choix", JOptionPane.QUESTION_MESSAGE, null,
+					tourtable, null);
+			String joueurnbr = joueurs.get(k); 
+			
 
-				while (reponse.contains(answer)) {
-					answer = (String) JOptionPane.showInputDialog(null, "Choisissez un domino disponible !", "Choix",
-							JOptionPane.QUESTION_MESSAGE, null, tourtable, null);
-					if (Turn.isNullOrEmpty(answer)) {
-						System.exit(0);
-					}
-
-				}
+			while (reponse.contains(answer)) {
+				answer = (String) JOptionPane.showInputDialog(null, "Domino déja pris , Choisissez un domino disponible !", "Choix",
+						JOptionPane.QUESTION_MESSAGE, null, tourtable, null);
 				if (Turn.isNullOrEmpty(answer)) {
 					System.exit(0);
 				}
-				System.out.println("joueurnbr = "+joueurnbr);
-				tourDominoJoueur.add(joueurnbr);
-				tourDominoJoueur.add(answer);
-				mapPlateau = Matrice.ajouterDominoPlateau(tourDominoJoueur,plateau);
-				System.out.println("answer = " + answer);
-				reponse.add(answer);
-
-				k++;
 
 			}
-		}
-return mapPlateau;
-	}
+			if (Turn.isNullOrEmpty(answer)) {
+				System.exit(0);
+			}
+			System.out.println(joueurnbr);
+			tourDominoJoueur.add(joueurnbr);
+			tourDominoJoueur.add(answer);
+			mapPlateau = Matrice.ajouterDominoPlateau(tourDominoJoueur,plateau);
+			reponse.add(answer);
 
+			k++;
+		}
+		
+		
+		
+		return mapPlateau;
+		
+	}
+	public static ArrayList<String> ordreJoueur(int n) {
+		ArrayList<String> joueurs = new ArrayList<String>();
+		if (n==2) {
+			joueurs.add("joueur1");
+			joueurs.add("joueur2");
+			joueurs.add("joueur1");
+			joueurs.add("joueur2");
+		}
+		if (n==3) {
+			joueurs.add("joueur1");
+			joueurs.add("joueur2");
+			joueurs.add("joueur3");
+		}
+		if (n==4) {
+			joueurs.add("joueur1");
+			joueurs.add("joueur2");
+			joueurs.add("joueur3");
+			joueurs.add("joueur4");
+		}
+
+		return joueurs;
+		
+	}
 	public static boolean isNullOrEmpty(String str) {
 		if (str != null && !str.isEmpty())
 			return false;

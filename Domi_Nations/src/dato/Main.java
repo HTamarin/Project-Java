@@ -42,11 +42,30 @@ public class Main {
 		monJeu.afficheResultat(); //calcul resultat
 		
 */
+		Map<String, String[][]> plateauJoueur = null;
 		Map<String, ArrayList<String>> full = Domino.domino();
+		
 		System.out.println(full);
+		
 		int n=Player.setPlayerCount();
+		
 		Player.coloR(n);
-		Map<String, String[][]> PlateauJoueur = Turn.turn(n,plateau); //tu mets plateau.get(joueur1) ça te donne le plateau du jour 1 par exemple
+		
+		ArrayList<ArrayList<String>> listTour = Turn.turn(n); // renvoit la liste composé de chaque tour de jeu ( domino qu'on peut choisir ) 
+		
+		ArrayList<String> ordretour = Turn.ordreJoueur(n); // renvoit la liste des joueurs 
+		//int nombretour = listTour.size();
+		//System.out.println("nombretour = "+nombretour);
+		
+		for (int i=0;i<listTour.size();i++) {
+			
+		plateauJoueur = Turn.choixDomino(i,n,ordretour, listTour, plateau); //tu mets plateauJoueur.get(joueur1) ça te donne le plateau du joueur 1 par exemple
+		//choixDomino est aussi 
+		}
+		Matrice.affichePlateau(plateauJoueur.get("joueur1"));
+		Matrice.affichePlateau(plateauJoueur.get("joueur2"));
+		//CA MARCHE !
+		//le plateau est dispo 
 	}
 
 }
