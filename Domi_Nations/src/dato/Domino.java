@@ -52,7 +52,6 @@ public class Domino {
 		Map<String, ArrayList<String>> SplitDomino = new TreeMap<String, ArrayList<String>>();
 		Set<String> keys = FullDomino.keySet();
 		ArrayList<String> cles = new ArrayList<String>(keys);
-		System.out.println(cles);
 		for (int i = 0; i < cles.size(); i++) {
 			String s = String.valueOf(cles.get(i));
 			ArrayList<String> list = FullDomino.get(s);
@@ -72,36 +71,44 @@ public class Domino {
 		return SplitDomino;
 
 	}
-	public static String splitdomaine(String a) {
+	public static String splitDomaine(String a) {
 		Map<String, ArrayList<String>> mapDominos = splitDomino();
 		ArrayList<String> domino= mapDominos.get(a);
 		String domaine = domino.get(1);
 		return domaine;
 		
 	}
-	public static String[] domaine(String a) {
+	public static ArrayList<String> domaine(String a) {
 		Map<String, ArrayList<String>> mapDominos = domino();
-		String[] domaine = new String[2];
-		domaine[0]=mapDominos.get(a).get(1);
-		domaine[1]=mapDominos.get(a).get(3);
+		ArrayList<String> domaine = new ArrayList<>();
+		domaine.add(mapDominos.get(a).get(1));
+		domaine.add(mapDominos.get(a).get(3));
 		return domaine;
 		
 	}
-	public static String splitcouronne(String a) {
+	public static int splitCouronne(String a) {
 		Map<String, ArrayList<String>> mapDominos = splitDomino();
 		ArrayList<String> domino= mapDominos.get(a);
-
-		String couronne = domino.get(0);
+		int couronne = Integer.parseInt(domino.get(0));
 		return couronne;
 		
 	}
-	public static String[] couronne(String a) {
+	public static int[] couronne(String a) {
 		Map<String, ArrayList<String>> mapDominos = domino();
-		String[] domaine = new String[2];
-		domaine[0]=mapDominos.get(a).get(0);
-		domaine[1]=mapDominos.get(a).get(2);
-		return domaine;
+		int[] couronne = new int[2];
+		couronne[0]=Integer.parseInt(mapDominos.get(a).get(0));
+		couronne[1]=Integer.parseInt(mapDominos.get(a).get(2));
+		return couronne;
 		
+	}
+	public static ArrayList<String> domainecouronne(String a) {
+		Map<String, ArrayList<String>> mapDominos = domino();
+		ArrayList<String> domainecouronne = new ArrayList<>();
+		domainecouronne.add(mapDominos.get(a).get(0));
+		domainecouronne.add(mapDominos.get(a).get(1));
+		domainecouronne.add(mapDominos.get(a).get(2));
+		domainecouronne.add(mapDominos.get(a).get(3));
+		return domainecouronne;
 	}
 
 }

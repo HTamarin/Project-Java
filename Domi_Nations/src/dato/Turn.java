@@ -81,6 +81,9 @@ public class Turn {
 			for (int g = 0; g < players; g++) {
 				joueur[g] = g + 1;
 			}
+			for (int u=0;u<tourtable.length;u++) {
+				System.out.println(tourtable[u]+ " = " + Domino.domainecouronne(tourtable[u]));
+			}
 			String answer = (String) JOptionPane.showInputDialog(null,
 					joueurs.get(k) + " Choisissez un domino ?", "Choix", JOptionPane.QUESTION_MESSAGE, null,
 					tourtable, null);

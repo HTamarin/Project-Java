@@ -42,9 +42,10 @@ public class Main {
 		monJeu.afficheResultat(); //calcul resultat
 		
 */
-		Map<String, String[][]> plateauJoueur = null;
+		System.out.println(oli.calculScore());;
 		Map<String, ArrayList<String>> full = Domino.domino();
-		
+		Map<String, String[][]> plateauJoueur = null;
+		Map<String, Integer> score = new TreeMap<String, Integer>();
 		System.out.println(full);
 		
 		int n=Player.setPlayerCount();
@@ -62,10 +63,19 @@ public class Main {
 		plateauJoueur = Turn.choixDomino(i,n,ordretour, listTour, plateau); //tu mets plateauJoueur.get(joueur1) ça te donne le plateau du joueur 1 par exemple
 		//choixDomino est aussi 
 		}
-		Matrice.affichePlateau(plateauJoueur.get("joueur1"));
-		Matrice.affichePlateau(plateauJoueur.get("joueur2"));
+		
+		for (int j=0;j<n;j++) {
+			String joueur="joueur"+String.valueOf(j+1);
+			Matrice.affichePlateau(plateauJoueur.get(joueur));	
+			//score.put(joueur,oli.calculScore(joueur, plateauJoueur));
+		}
+		System.out.println("score");
+		//int scorejoueur = CalculScore.affichescore(joueur,plateauJoueur);
+		//System.out.println("score" +joueur +" = "+scorejoueur  );
+		
 		//CA MARCHE !
 		//le plateau est dispo 
 	}
+	
 
 }
