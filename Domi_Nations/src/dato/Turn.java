@@ -26,8 +26,8 @@ public class Turn {
 		for (int i = 0; i < 3; i++) {
 			Collections.shuffle(newcles);
 		}
-		System.out.println("clés : " + cles);
-		System.out.println("newclés : " + newcles);
+		System.out.println("clÃ©s : " + cles);
+		System.out.println("newclÃ©s : " + newcles);
 		int numeroTour = 0;
 		for (int i = 0; i < ListeDomRed.size(); i = i + r) {
 
@@ -72,6 +72,7 @@ public class Turn {
 			ArrayList<String> reponse = new ArrayList<String>();
 			ArrayList<String>tourlist = dominos.get(i);
 		while (k < players) {
+			// LA TU METS TA METHODE DE SELECTION DE DOMINO
 			// System.out.println(random);
 			ArrayList<String> tourDominoJoueur = new ArrayList<String>();
 			String[] tourtable = new String[tourlist.size()];
@@ -91,7 +92,7 @@ public class Turn {
 			
 
 			while (reponse.contains(answer)) {
-				answer = (String) JOptionPane.showInputDialog(null, "Domino déja pris , Choisissez un domino disponible !", "Choix",
+				answer = (String) JOptionPane.showInputDialog(null, "Domino dÃ©ja pris , Choisissez un domino disponible !", "Choix",
 						JOptionPane.QUESTION_MESSAGE, null, tourtable, null);
 				if (Turn.isNullOrEmpty(answer)) {
 					System.exit(0);
