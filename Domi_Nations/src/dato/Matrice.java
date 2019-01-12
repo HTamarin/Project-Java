@@ -389,6 +389,8 @@ public class Matrice {
 		}
 		System.out.println("Les emplacements disponibles sont : ");
 		int k = 1;
+			//LA TU METS TON PLATEAU AVEC LES EMPLACEMENTS EN SURBRILLANCE OU TU AFFICHE LES EMPLACESMENTS CI-DESSOUS
+			
 		for (int i = 0; i < caseDispo.size(); i = i + 2) {
 			System.out.println("Emplacement " + String.valueOf(k) + " = " + "x:" + String.valueOf(caseDispo.get(i+1))
 					+ " y:" + String.valueOf(caseDispo.get(i)));
@@ -712,7 +714,7 @@ public class Matrice {
 		if (case2Dispo.size()!=0) {
 		System.out.println("Les emplacements disponibles sont : ");
 		int k1 = 1;
-
+		//LA TU METS TON PLATEAU AVEC LES EMPLACEMENTS EN SURBRILLANCE OU TU AFFICHE LES EMPLACESMENTS CI-DESSOUS
 		for (int i1 = 0; i1 < case2Dispo.size(); i1 = i1 + 2) {
 			System.out.println("Emplacement " + String.valueOf(k1) + " = " + "x:" + String.valueOf(case2Dispo.get(i1+1))
 					+ " y:" + String.valueOf(case2Dispo.get(i1)));
