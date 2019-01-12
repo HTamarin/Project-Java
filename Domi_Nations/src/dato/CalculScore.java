@@ -55,9 +55,9 @@ public class oli{
             while (tableauX.size() != 0) {
                 nbCouronnes = 0;
                 scoretemp = 0;
-                int lol = (Integer) tableauX.keySet().toArray()[0];
+                int change = (int) tableaucoordonnex.keySet().toArray()[0];
                 System.out.println("lol = " +lol);
-                calculScore2(lol, tableaucoordonnex.get(lol), tableaucoordonney.get(lol), plateaujoueur);
+                calculScore2(change, tableaucoordonnex.get(lol), tableaucoordonney.get(lol), plateaujoueur);
                 nbCouronnes = Domino.domino.get(0);
                 score = score + scoretemporaire;
                 scorefinal = score * nbCouronnes;
@@ -70,7 +70,7 @@ public class oli{
 
     public static void calculScorerecursif(int indice, int x, int y, /*classe du plateau ? */ plateaujoueur) {
 
-        nbCouronnes += //courone.plateau[i][j] // domino.splitD();//on veut récupérer le nombre de couronnes selon notre x et notre y;
+        nbCouronnes += domino.spliDomaine(plateau[x][y]); //on veut récupérer le nombre de couronnes selon notre x et notre y;
         tableaucoordonnex.remove(indice);
         tableaucoordonney.remove(indice);
         scoretemporaire++;
