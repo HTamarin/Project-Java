@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class oli{
-    private static int scoretemp = 0;
-    private static HashMap<Integer, Integer> tableauX = new HashMap<Integer, Integer>();
-    private static HashMap<Integer, Integer> tableauY = new HashMap<Integer, Integer>();
+    private static int scoretemporaire = 0;
+    private static HashMap<Integer, Integer> tableaucoordonnex = new HashMap<Integer, Integer>();
+    private static HashMap<Integer Integer> tableaucoordonney = new HashMap<Integer, Integer>();
     static String [][] plateaujoueur ={{null ,null, null, null, null, null, null, null, null},
             {null ,null, null, null, null, null, null, null, null},
             {null ,"46d", "35d" ,"47d", "9g", "36d", null, null, null},
@@ -18,7 +18,7 @@ public class oli{
             {null ,null, null, null, null, null, null, null, null},
             {null ,null, null, null, null, null, null, null, null}};
 
-    public static int calculScore( String joueur  Map<String, String[][]> Plateau) {
+    public static int calculScore( String joueur  String [][] plateaujoueur //Plateau censé être celui du joueur) {
         ArrayList<String> nomdomaine = new ArrayList<>();
         nomdomaine.add("Champs");
         nomdomaine.add("Foret");
@@ -28,14 +28,13 @@ public class oli{
         nomdomaine.add("Montagne");
         String domainedomino=null;
         String domaine = null;
-        int[] temp = new int[2];
         int nbCouronnes;
         int score = 0;
         int scorefinal = 0;
-        int f;
+        int indicepremiertableau;
 
         for (int d = 0; d < 6; d++) {
-            f = 0;
+            indicepremiertableau = 0;
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 9; j++) {
                     String domino = plateaujoueur[i][j];
@@ -43,25 +42,24 @@ public class oli{
                         domainedomino = Domino.splitDomaine(domino);
                         domaine=nomdomaine.get(d);
                         if (domainedomino.equals(domaine)) {
-                            tableauX.put(f, i);
-                            tableauY.put(f, j);
-                            f++;
-                            System.out.println("f= "+f);
+                            tableaucoordonnex.put(indicepremiertableau, i);
+                            tableaucoordonney.put(indicepremiertableau, j);
+                            indicepremiertableau++;
                         }
                     }
                 }
             }
-            System.out.println("tableauX = " + tableauX);
-            System.out.println("tableauY = " + tableauY);
+            System.out.println("tableauX = " + tableaucoordonnex);
+            System.out.println("tableauY = " + tableaucoordonney);
 
             while (tableauX.size() != 0) {
                 nbCouronnes = 0;
                 scoretemp = 0;
                 int lol = (Integer) tableauX.keySet().toArray()[0];
                 System.out.println("lol = " +lol);
-                calculScore2(lol, tableauX.get(lol), tableauY.get(lol), Plateau);
+                calculScore2(lol, tableaucoordonnex.get(lol), tableaucoordonney.get(lol), plateaujoueur);
                 nbCouronnes = Domino.domino.get(0);
-                score = score + scoretemp;
+                score = score + scoretemporaire;
                 scorefinal = score * nbCouronnes;
             }
         }
@@ -70,26 +68,26 @@ public class oli{
     }
 
 
-    public static void calculScore2(int indice, int x, int y) {
+    public static void calculScorerecursif(int indice, int x, int y, /*classe du plateau ? */ plateaujoueur) {
 
-        nbCouronnes += //domino.splitDomino();//on veut récupérer le nombre de couronnes selon notre x et notre y;
-        tableauX.remove(indice);
-        tableauY.remove(indice);
-        scoretemp++;
+        nbCouronnes += //courone.plateau[i][j] // domino.splitD();//on veut récupérer le nombre de couronnes selon notre x et notre y;
+        tableaucoordonnex.remove(indice);
+        tableaucoordonney.remove(indice);
+        scoretemporaire++;
 
-        for (int cle = 0; cle < 81; cle++) {
-            if (tableauX.containsKey(cle)) {
+        for (int key = 0; key < 81; key++) {
+            if (tableaucoordonnex.containsKey(key)) {
 
 
-                int xTemporaire = tableauX.get(cle);
-                int yTemporaire = tableauY.get(cle);
+                int xtemp = tableaucoordonnex.get(cle);
+                int ytemp = tableaucoordonney.get(cle);
 
-                if ((xTemporaire == x + 1 && yTemporaire == y) ||
-                        (xTemporaire == x - 1 && yTemporaire == y) ||
-                        (xTemporaire == x && yTemporaire == y - 1) ||
-                        (xTemporaire == x && yTemporaire == y + 1)) {
+                if ((xtemp == x + 1 && ytemp == y) ||
+                        (xtemp == x - 1 && ytemp == y) ||
+                        (xtemp == x && ytemp == y - 1) ||
+                        (xtemp == x && ytemp == y + 1)) {
 
-                    calculScore2(cle, xTemporaire, yTemporaire, Plateau);
+                    calculScorerecursif(key, xtemp, ytemp, plateaujoueur);
                 }
             }
         }
