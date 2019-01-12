@@ -11,7 +11,7 @@ public class CalculScore{
     private static int nbcouronne = 0;
     private static HashMap<Integer, Integer> tableaucoordonnex = new HashMap<Integer, Integer>();
     private static HashMap<Integer,  Integer> tableaucoordonney = new HashMap<Integer, Integer>();
-    static String [][] plateaujoueur ={{null ,null, null, null, null, null, null, null, null},
+   /* static String [][] plateaujoueur ={{null ,null, null, null, null, null, null, null, null},
             {null ,null, null, null, null, null, null, null, null},
             {null ,"46d", "35d" ,"47d", "9g", "36d", null, null, null},
             {null ,"46g" ,"35g" ,"47g", "9d", "36g", null, null, null},
@@ -20,10 +20,10 @@ public class CalculScore{
             {null ,null ,null ,null ,"9g" ,null ,null ,null, null},
             {null ,null, null, null, null, null, null, null, null},
             {null ,null, null, null, null, null, null, null, null}};
-
-    public static int calculScore() {
-    //public static int calculScore(String joueur , Map<String, String[][]> plateaux) { //Plateau censé être celui du joueur) {
-    	//String[][] plateaujoueur = plateaux.get(joueur);
+*/
+    //public static int calculScore() {
+    public static int calculScore(String joueur , Map<String, String[][]> plateaux) { //Plateau censé être celui du joueur) {
+    	String[][] plateaujoueur = plateaux.get(joueur);
         ArrayList<String> nomdomaine = new ArrayList<>();
         nomdomaine.add("Champs");
         nomdomaine.add("Foret");
