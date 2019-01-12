@@ -42,12 +42,12 @@ public class Main {
 		monJeu.afficheResultat(); //calcul resultat
 		
 */
-		System.out.println(oli.calculScore());;
+
 		Map<String, ArrayList<String>> full = Domino.domino();
 		Map<String, String[][]> plateauJoueur = null;
 		Map<String, Integer> score = new TreeMap<String, Integer>();
 		System.out.println(full);
-		
+		System.out.println(CalculScore.calculScore());
 		int n=Player.setPlayerCount();
 		
 		Player.coloR(n);
@@ -67,9 +67,9 @@ public class Main {
 		for (int j=0;j<n;j++) {
 			String joueur="joueur"+String.valueOf(j+1);
 			Matrice.affichePlateau(plateauJoueur.get(joueur));	
-			//score.put(joueur,oli.calculScore(joueur, plateauJoueur));
+			//score.put(joueur,CalculScore.calculScore(joueur,plateauJoueur));
 		}
-		System.out.println("score");
+		//System.out.println("score =" + score);
 		//int scorejoueur = CalculScore.affichescore(joueur,plateauJoueur);
 		//System.out.println("score" +joueur +" = "+scorejoueur  );
 		
