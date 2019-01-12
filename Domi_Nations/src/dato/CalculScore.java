@@ -18,7 +18,7 @@ public class oli{
             {null ,null, null, null, null, null, null, null, null},
             {null ,null, null, null, null, null, null, null, null}};
 
-    public static int calculScore() {
+    public static int calculScore( String joueur  Map<String, String[][]> Plateau) {
         ArrayList<String> nomdomaine = new ArrayList<>();
         nomdomaine.add("Champs");
         nomdomaine.add("Foret");
@@ -29,8 +29,8 @@ public class oli{
         String domainedomino=null;
         String domaine = null;
         int[] temp = new int[2];
+        int nbCouronnes;
         int score = 0;
-        int nbCouronnes = 0;
         int scorefinal = 0;
         int f;
 
@@ -55,10 +55,11 @@ public class oli{
             System.out.println("tableauY = " + tableauY);
 
             while (tableauX.size() != 0) {
+                nbCouronnes = 0;
                 scoretemp = 0;
                 int lol = (Integer) tableauX.keySet().toArray()[0];
                 System.out.println("lol = " +lol);
-                calculScore2(lol, tableauX.get(lol), tableauY.get(lol));
+                calculScore2(lol, tableauX.get(lol), tableauY.get(lol), Plateau);
                 nbCouronnes = Domino.domino.get(0);
                 score = score + scoretemp;
                 scorefinal = score * nbCouronnes;
@@ -70,9 +71,12 @@ public class oli{
 
 
     public static void calculScore2(int indice, int x, int y) {
+
+        nbCouronnes += //domino.splitDomino();//on veut récupérer le nombre de couronnes selon notre x et notre y;
         tableauX.remove(indice);
         tableauY.remove(indice);
         scoretemp++;
+
         for (int cle = 0; cle < 81; cle++) {
             if (tableauX.containsKey(cle)) {
 
@@ -85,7 +89,7 @@ public class oli{
                         (xTemporaire == x && yTemporaire == y - 1) ||
                         (xTemporaire == x && yTemporaire == y + 1)) {
 
-                    calculScore2(cle, xTemporaire, yTemporaire);
+                    calculScore2(cle, xTemporaire, yTemporaire, Plateau);
                 }
             }
         }
