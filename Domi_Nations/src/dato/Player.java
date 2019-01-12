@@ -25,7 +25,7 @@ public class Player {
 		}
 
 		int NombreJoueurs = Integer.parseInt(answer);
-		System.out.println(NombreJoueurs);
+		//System.out.println(NombreJoueurs);
 		return NombreJoueurs;
 	}
 

@@ -43,10 +43,8 @@ public class Main {
 		
 */
 
-		Map<String, ArrayList<String>> full = Domino.domino();
 		Map<String, String[][]> plateauJoueur = null;
 		Map<String, Integer> score = new TreeMap<String, Integer>();
-		System.out.println(full);
 		//System.out.println(CalculScore.calculScore());
 		int n=Player.setPlayerCount();
 		

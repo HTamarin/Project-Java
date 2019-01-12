@@ -26,8 +26,8 @@ public class Turn {
 		for (int i = 0; i < 3; i++) {
 			Collections.shuffle(newcles);
 		}
-		System.out.println("clés : " + cles);
-		System.out.println("newclés : " + newcles);
+		//System.out.println("clés : " + cles);
+		//System.out.println("newclés : " + newcles);
 		int numeroTour = 0;
 		for (int i = 0; i < ListeDomRed.size(); i = i + r) {
 
@@ -48,7 +48,7 @@ public class Turn {
 				tourlist.add(q);
 			}
 			numeroTour = numeroTour + 1;
-			System.out.println("tour " + (numeroTour) + " : " + tourlist);
+			//System.out.println("tour " + (numeroTour) + " : " + tourlist);
 			listTour.add(tourlist);
 			
 		}
@@ -62,16 +62,16 @@ public class Turn {
 		 ArrayList<String> joueurs = ordrejoueur;
 			Collections.shuffle(joueurs);
 			Collections.shuffle(joueurs);
-			System.out.println("joueurs = "+joueurs);
+			//System.out.println("joueurs = "+joueurs);
 		 ArrayList<ArrayList<String>> dominos=dominotour;
 		 int players = n;
 		 if (n==2) {
 			 players =4;
 		 }
-		 System.out.println(dominos);
 			ArrayList<String> reponse = new ArrayList<String>();
 			ArrayList<String>tourlist = dominos.get(i);
 		while (k < players) {
+			String libre ="";
 			// System.out.println(random);
 			ArrayList<String> tourDominoJoueur = new ArrayList<String>();
 			String[] tourtable = new String[tourlist.size()];
@@ -82,17 +82,22 @@ public class Turn {
 				joueur[g] = g + 1;
 			}
 			for (int u=0;u<tourtable.length;u++) {
-				System.out.println(tourtable[u]+ " = " + Domino.domainecouronne(tourtable[u]));
+				if (!reponse.contains(tourtable[u])){
+				System.out.println(tourtable[u]+ " = " + Domino.domainecouronne(tourtable[u]) +" libre");
+
+				}
+				if (reponse.contains(tourtable[u])){
+					System.out.println(tourtable[u]+ " = " + Domino.domainecouronne(tourtable[u]) +" pris");					
+					}
 			}
 			String joueuractuel = joueurs.get(k);
 			String answer = (String) JOptionPane.showInputDialog(null,
 					joueuractuel + " Choisissez un domino ?", "Choix", JOptionPane.QUESTION_MESSAGE, null,
 					tourtable, null);
-			String joueurnbr = joueurs.get(k); 
-			
+			String joueurnbr = joueurs.get(k); 		
 
 			while (reponse.contains(answer)) {
-				answer = (String) JOptionPane.showInputDialog(null, "Domino déja pris , Choisissez un domino disponible !", "Choix",
+				answer = (String) JOptionPane.showInputDialog(null, "Choisissez un domino disponible !", "Choix",
 						JOptionPane.QUESTION_MESSAGE, null, tourtable, null);
 				if (Turn.isNullOrEmpty(answer)) {
 					System.exit(0);
@@ -102,7 +107,9 @@ public class Turn {
 			if (Turn.isNullOrEmpty(answer)) {
 				System.exit(0);
 			}
-			System.out.println(joueurnbr);
+
+			
+			//System.out.println(joueurnbr);
 			tourDominoJoueur.add(joueurnbr);
 			tourDominoJoueur.add(answer);
 			mapPlateau = Matrice.ajouterDominoPlateau(tourDominoJoueur,plateau);

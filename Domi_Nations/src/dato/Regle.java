@@ -79,7 +79,7 @@ public class Regle {
             PoolDominos = FullDomino;
 
         }
-        System.out.println("Les dominos restants sont : " + PoolDominos);
+       // System.out.println("Les dominos restants sont : " + PoolDominos);
         return PoolDominos;
 
     }

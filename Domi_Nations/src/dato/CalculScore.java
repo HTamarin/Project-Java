@@ -61,7 +61,7 @@ public class CalculScore{
                 calculScorerecursif(change, tableaucoordonnex.get(indice), tableaucoordonney.get(indice), plateaujoueur);
                 
                 score = score + scoretemporaire*nbcouronne;
-                System.out.println("score = "+score+" scoretemporaire =" + scoretemporaire + " nbcouronne= " + nbcouronne);
+               // System.out.println("score = "+score+" scoretemporaire =" + scoretemporaire + " nbcouronne= " + nbcouronne);
                 scoretemporaire=0;
                 nbcouronne=0;
                 scorefinal = score;

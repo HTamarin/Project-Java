@@ -34,7 +34,7 @@ public class Domino {
 					dominoString.add(String.valueOf(domino[j])); // On converti chaque argument en String
 				}
 				String s = String.valueOf(i);
-				mapdomino.put(s, dominoString); // On met chaque argument dans une bibliothÃ¨que
+				mapdomino.put(s, dominoString); // On met chaque argument dans une bibliothèque
 												// (String,ArrayList<String>)
 				i++;
 
@@ -57,14 +57,14 @@ public class Domino {
 			ArrayList<String> list = FullDomino.get(s);
 			ArrayList<String> PartieDominoG = new ArrayList<String>();
 			ArrayList<String> PartieDominoD = new ArrayList<String>();
-			PartieDominoG.add(list.get(0));// On recupÃ¨re les deux premiers argument de chaque ligne
+			PartieDominoG.add(list.get(0));// On recupère les deux premiers argument de chaque ligne
 			PartieDominoG.add(list.get(1));
-			String g = s + "g"; // g correspond Ã  partie droite ( 2 premiers arguments)
-			SplitDomino.put(g, PartieDominoG); // On insÃ¨re chaque partie dans un bibliotheque 2 fois plus grande que
+			String g = s + "g"; // g correspond à partie droite ( 2 premiers arguments)
+			SplitDomino.put(g, PartieDominoG); // On insère chaque partie dans un bibliotheque 2 fois plus grande que
 												// "domino"
 			PartieDominoD.add(list.get(2));
 			PartieDominoD.add(list.get(3));
-			String d = s + "d"; // d correspond Ã  partie gauche ( 2 derniers arguments)
+			String d = s + "d"; // d correspond à partie gauche ( 2 derniers arguments)
 			SplitDomino.put(d, PartieDominoD);
 
 		}
@@ -84,6 +84,13 @@ public class Domino {
 		domaine.add(mapDominos.get(a).get(1));
 		domaine.add(mapDominos.get(a).get(3));
 		return domaine;
+		
+	}
+	public static int splitCouronneInt(String a) {
+		Map<String, ArrayList<String>> mapDominos = splitDomino();
+		ArrayList<String> domino= mapDominos.get(a);
+		int couronne = Integer.parseInt(domino.get(0));
+		return couronne;
 		
 	}
 	public static int splitCouronne(String a) {
@@ -112,9 +119,3 @@ public class Domino {
 	}
 
 }
-/*ArrayList<String>dominocouronne = Domino.domainecouronne(nomdomino);
-couronne1 = dominocouronne.get(0);
-couronne2 = dominocouronne.get(2);
-domaine1 = dominocouronne.get(1);
-domaine2 = dominocouronne.get(3);
-	*/

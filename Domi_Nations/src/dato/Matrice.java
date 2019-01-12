@@ -42,8 +42,27 @@ public class Matrice {
 	public static void affichePlateau(String[][] plateau) {
 		for (int i = 0; i < plateau.length; i++) {
 			for (int j = 0; j < plateau.length; j++) {
+				String domino = plateau[i][j];
+				System.out.print(domino + " ");
+			}
+			System.out.println();
+		}
 
-				System.out.print(plateau[i][j] + " ");
+	}
+	public static void affichePlateauDomaine(String[][] plateau) {
+		for (int i = 0; i < plateau.length; i++) {
+			for (int j = 0; j < plateau.length; j++) {
+				String domainecouronne="null";
+				String domino = plateau[i][j];
+				
+				if(domino!=null && !domino.equals("chateau")) {
+					domainecouronne=(Domino.splitDomaine(domino)+Domino.splitCouronne(domino));
+				}
+				if(domino=="chateau") {
+					domainecouronne="chateau";
+				}
+
+				System.out.print(domainecouronne + " ");
 			}
 			System.out.println();
 		}
@@ -55,8 +74,11 @@ public class Matrice {
 		String domino = tourDomino.get(1);
 		ArrayList<String> facedomino = Domino.domainecouronne(domino);
 		ArrayList<Integer> caseDispo = new ArrayList<Integer>();
+		
 		String[][] plateauJoueur = plateau.get(joueur);
-		affichePlateau(plateauJoueur);
+		System.out.println();
+		affichePlateauDomaine(plateauJoueur);
+		System.out.println();
 		int maxx = 0;
 		int minx = 0;
 		int maxy = 0;
@@ -372,6 +394,7 @@ public class Matrice {
 			Answer.add(answers[j]);
 		}
 		System.out.println("Rappel : " + facedomino );
+		System.out.println();
 		String answer = (String) JOptionPane.showInputDialog(null, "Quelle partie du domino voulez-vous poser ?",
 				"Choix", JOptionPane.QUESTION_MESSAGE, null, answers, null);
 		if (Turn.isNullOrEmpty(answer)) {
@@ -388,12 +411,11 @@ public class Matrice {
 			partieDomino2 = domino + "g";
 		}
 		System.out.println("Les emplacements disponibles sont : ");
+		System.out.println();
 		int k = 1;
-			//LA TU METS TON PLATEAU AVEC LES EMPLACEMENTS EN SURBRILLANCE OU TU AFFICHE LES EMPLACESMENTS CI-DESSOUS
-			
 		for (int i = 0; i < caseDispo.size(); i = i + 2) {
-			System.out.println("Emplacement " + String.valueOf(k) + " = " + "x:" + String.valueOf(caseDispo.get(i+1))
-					+ " y:" + String.valueOf(caseDispo.get(i)));
+			System.out.println("Emplacement " + String.valueOf(k) + " = " + "x:" + String.valueOf((caseDispo.get(i+1)+1))
+					+ " y:" + String.valueOf((caseDispo.get(i))+1));
 			k++;
 		}
 		String[] casestring = new String[caseDispo.size() / 2];
@@ -423,13 +445,11 @@ public class Matrice {
 		System.out.println(listeduo);
 		System.out.println("l=" + l);
 		System.out.println("emp=" + emplacement);
-
-		//plateauJoueur[caseDispo.get(place.get(0))][caseDispo.get(place.get(1))] = partieDomino1;
+		plateauJoueur[caseDispo.get(place.get(0))][caseDispo.get(place.get(1))] = partieDomino1;
 
 		//////////////////////////////////////////////////////
 
 		ArrayList<Integer> case2Dispo = new ArrayList<Integer>();
-		System.out.println("waypoint5");
 		int i = caseDispo.get(place.get(0));
 		int j = caseDispo.get(place.get(1));
 		if (i > maxx) {
@@ -444,7 +464,6 @@ public class Matrice {
 		if (j < miny) {
 			miny = j;
 		}
-		System.out.println("x= " + i + " y= " + j);
 		if (i > 0 && j > 0 && i < 9 && j < 9) {
 			if (plateauJoueur[i + 1][j] == null) {
 				if ((maxx - minx) < 4 && (maxy - miny) < 4) {
@@ -711,13 +730,27 @@ public class Matrice {
 				}
 			}
 		}
+		affichePlateauDomaine(plateauJoueur);
 		if (case2Dispo.size()!=0) {
 		System.out.println("Les emplacements disponibles sont : ");
+		System.out.println();
 		int k1 = 1;
-		//LA TU METS TON PLATEAU AVEC LES EMPLACEMENTS EN SURBRILLANCE OU TU AFFICHE LES EMPLACESMENTS CI-DESSOUS
+		String position = null;
 		for (int i1 = 0; i1 < case2Dispo.size(); i1 = i1 + 2) {
-			System.out.println("Emplacement " + String.valueOf(k1) + " = " + "x:" + String.valueOf(case2Dispo.get(i1+1))
-					+ " y:" + String.valueOf(case2Dispo.get(i1)));
+			if((case2Dispo.get(i1)) == (i) && (case2Dispo.get(i1+1)) == (j+1) ) {
+				position = "droite";
+			}
+			if((case2Dispo.get(i1)) == (i+1) && (case2Dispo.get(i1+1)) == (j) ) {
+				position = "bas";
+			}
+			if((case2Dispo.get(i1)) == (i-1) && (case2Dispo.get(i1+1)) == (j) ) {
+				position = "haut";
+			}
+			if((case2Dispo.get(i1)) == (i) && (case2Dispo.get(i1+1)) == (j-1) ) {
+				position = "gauche";
+			}
+			System.out.println("Emplacement " + String.valueOf(k1) + " = " + "x:" + String.valueOf(case2Dispo.get(i1+1)+1)
+					+ " y:" + String.valueOf(case2Dispo.get(i1)+1) + " " + position);
 			k1++;
 		}
 		String[] casestring1 = new String[case2Dispo.size() / 2];
@@ -726,12 +759,15 @@ public class Matrice {
 			casestring1[j1] = String.valueOf(j1 + 1);
 			mapemplacement1.put(String.valueOf(j1 + 1), j1 + 1);
 		}
+		System.out.println();
+		System.out.println();
+		System.out.println("Rappel : " + facedomino + ", face "+answer + " deja placee.");
+		System.out.println();
 		String emplacement1 = (String) JOptionPane.showInputDialog(null, "Quel emplacement choisissez vous ?", "Choix",
 				JOptionPane.QUESTION_MESSAGE, null, casestring1, null);
 		if (Turn.isNullOrEmpty(emplacement1)) {
 			System.exit(0);
 		}
-		ArrayList<int[]> listeduo1 = new ArrayList<int[]>();
 		Map<String, ArrayList<Integer>> mapcouple1 = new TreeMap<String, ArrayList<Integer>>();
 		int debut1 = 0;
 		for (int po = 0; po < 100; po = po + 2) {
@@ -744,9 +780,9 @@ public class Matrice {
 		}
 		String l1 = String.valueOf(mapemplacement1.get(emplacement1) - 1);
 		ArrayList<Integer> place1 = mapcouple1.get(l1);
-		System.out.println(listeduo1);
-		System.out.println("l=" + l1);
-		System.out.println("emp=" + emplacement1);
+		//System.out.println(listeduo1);
+		//System.out.println("l=" + l1);
+		//System.out.println("emp=" + emplacement1);
 		int x = case2Dispo.get(place1.get(0));
 		int y = case2Dispo.get(place1.get(1));
 		if (x > maxx) {
@@ -763,7 +799,9 @@ public class Matrice {
 		}
 		plateauJoueur[caseDispo.get(place.get(0))][caseDispo.get(place.get(1))] = partieDomino1;
 		plateauJoueur[case2Dispo.get(place1.get(0))][case2Dispo.get(place1.get(1))] = partieDomino2;
-		affichePlateau(plateauJoueur);
+		System.out.println();
+		affichePlateauDomaine(plateauJoueur);
+		System.out.println();
 		if (joueur.equals("joueur1")) {
 			maxxj1 = maxx;
 			minxj1 = minx;
@@ -788,6 +826,9 @@ public class Matrice {
 			maxyj4 = maxy;
 			minyj4 = miny;
 		}
+		}
+		else {
+			plateauJoueur[caseDispo.get(place.get(0))][caseDispo.get(place.get(1))] = null;
 		}
 	}
 		plateau.put(joueur,plateauJoueur);
