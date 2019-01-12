@@ -13,15 +13,17 @@ public class CalculScore{
     private static HashMap<Integer,  Integer> tableaucoordonney = new HashMap<Integer, Integer>();
     static String [][] plateaujoueur ={{null ,null, null, null, null, null, null, null, null},
             {null ,null, null, null, null, null, null, null, null},
-            {null ,"46d", "46d" ,"46d", "46d", "46d", null, null, null},
-            {null ,"46d" ,"46d" ,"46d", "46d", "38d", null, null, null},
-            {null ,"46d" ,"46d" ,"46d" ,"chateau", null, null,null, null},
-            {null ,"46d","46d", "46d" ,"46d" ,null ,null ,null ,null},
-            {null ,null ,null ,null ,"38d" ,null ,null ,null, null},
+            {null ,"46d", "35d" ,"47d", "9g", "36d", null, null, null},
+            {null ,"46g" ,"35g" ,"47g", "9d", "36g", null, null, null},
+            {null ,"5d" ,"11d" ,"37d" ,"chateau", null, null,null, null},
+            {null ,"5g","11g", "37g" ,"8d" ,null ,null ,null ,null},
+            {null ,null ,null ,null ,"9g" ,null ,null ,null, null},
             {null ,null, null, null, null, null, null, null, null},
             {null ,null, null, null, null, null, null, null, null}};
 
-    public static int calculScore() { //Plateau censé être celui du joueur) {
+    public static int calculScore() {
+    //public static int calculScore(String joueur , Map<String, String[][]> plateaux) { //Plateau censé être celui du joueur) {
+    	//String[][] plateaujoueur = plateaux.get(joueur);
         ArrayList<String> nomdomaine = new ArrayList<>();
         nomdomaine.add("Champs");
         nomdomaine.add("Foret");
@@ -55,8 +57,13 @@ public class CalculScore{
             while (tableaucoordonnex.size() != 0) {
                 int indice = (Integer) tableaucoordonnex.keySet().toArray()[0];
                 int change = (int) tableaucoordonnex.keySet().toArray()[0];
+
                 calculScorerecursif(change, tableaucoordonnex.get(indice), tableaucoordonney.get(indice), plateaujoueur);
+                
                 score = score + scoretemporaire*nbcouronne;
+                System.out.println("score = "+score+" scoretemporaire =" + scoretemporaire + " nbcouronne= " + nbcouronne);
+                scoretemporaire=0;
+                nbcouronne=0;
                 scorefinal = score;
             }
         }
@@ -70,6 +77,7 @@ public class CalculScore{
         couronne = Domino.splitCouronne(plateaujoueur[x][y]); //on veut récupérer le nombre de couronnes selon notre x et notre y;
         tableaucoordonnex.remove(indice);
         tableaucoordonney.remove(indice);
+        
         nbcouronne=couronne+nbcouronne;
         scoretemporaire++;
 

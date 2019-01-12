@@ -47,7 +47,7 @@ public class Main {
 		Map<String, String[][]> plateauJoueur = null;
 		Map<String, Integer> score = new TreeMap<String, Integer>();
 		System.out.println(full);
-		System.out.println(CalculScore.calculScore());
+		//System.out.println(CalculScore.calculScore());
 		int n=Player.setPlayerCount();
 		
 		Player.coloR(n);
@@ -55,8 +55,6 @@ public class Main {
 		ArrayList<ArrayList<String>> listTour = Turn.turn(n); // renvoit la liste composé de chaque tour de jeu ( domino qu'on peut choisir ) 
 		
 		ArrayList<String> ordretour = Turn.ordreJoueur(n); // renvoit la liste des joueurs 
-		//int nombretour = listTour.size();
-		//System.out.println("nombretour = "+nombretour);
 		
 		for (int i=0;i<listTour.size();i++) {
 			
@@ -67,11 +65,10 @@ public class Main {
 		for (int j=0;j<n;j++) {
 			String joueur="joueur"+String.valueOf(j+1);
 			Matrice.affichePlateau(plateauJoueur.get(joueur));	
-			//score.put(joueur,CalculScore.calculScore(joueur,plateauJoueur));
+			score.put(joueur,CalculScore.calculScore(joueur,plateauJoueur));
 		}
-		//System.out.println("score =" + score);
-		//int scorejoueur = CalculScore.affichescore(joueur,plateauJoueur);
-		//System.out.println("score" +joueur +" = "+scorejoueur  );
+		System.out.println("score =" + score);
+		
 		
 		//CA MARCHE !
 		//le plateau est dispo 
