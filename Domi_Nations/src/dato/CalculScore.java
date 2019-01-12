@@ -31,7 +31,7 @@ public class oli{
         int[] temp = new int[2];
         int score = 0;
         int nbCouronnes = 0;
-        int scoref = 0;
+        int scorefinal = 0;
         int f;
 
         for (int d = 0; d < 6; d++) {
@@ -59,13 +59,13 @@ public class oli{
                 int lol = (Integer) tableauX.keySet().toArray()[0];
                 System.out.println("lol = " +lol);
                 calculScore2(lol, tableauX.get(lol), tableauY.get(lol));
-                nbCouronnes = domino.get(0);
+                nbCouronnes = Domino.domino.get(0);
                 score = score + scoretemp;
-                scoref = score * nbCouronnes;
+                scorefinal = score * nbCouronnes;
             }
         }
 
-        return (scoref);
+        return (scorefinal);
     }
 
 
