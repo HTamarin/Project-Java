@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 public class Turn {
 	static ArrayList<String>tourlist = new ArrayList<String>();
 	static String dominoselectionne;
+	static ArrayList<ArrayList<String>> listTour = new ArrayList<ArrayList<String>>();
+	static int tour =0;
 	public static ArrayList<ArrayList<String>> turn(int s) {
 		
 		int r = 0;
@@ -125,7 +127,7 @@ public class Turn {
 		}
 		
 		
-		
+		tour++;
 		return mapPlateau;
 		
 	}
