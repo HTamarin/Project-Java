@@ -17,7 +17,7 @@ public class DominoGraoh extends JPanel {
 	
 	public DominoGraoh(String nom) {
 		this.numero=nom;
-		switch (Domino.getDomaine1(nom)) { // Definis la couleur de la premičre moitié
+		switch (Domino.getDomaine1(nom)) { // Definis la couleur de la premičre moitie
 		
 		case champs : try { doColor1 = ImageIO.read(new File("champs.png"));
 			  }
@@ -39,7 +39,7 @@ public class DominoGraoh extends JPanel {
 		  catch(Exception e) {}break;
 	}
 		
-		switch (Domino.getDomaine2(nom)) { // Couleur de la deuxičme moitié
+		switch (Domino.getDomaine2(nom)) { // Couleur de la deuxieme moitie
 		
 		case champs : try { doColor2 = ImageIO.read(new File("champs.png"));
 			  }
