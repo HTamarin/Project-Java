@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 public class Launcher extends JFrame{
 		  private Paneau pan = new Paneau();
 		  private PlayBouton bouton = new PlayBouton("Jouer");
+		  bouton.addActionListener(new PlayListener());
 		  private JPanel container = new JPanel();
 		  
 		  public Launcher(){                
@@ -21,8 +22,7 @@ public class Launcher extends JFrame{
 				    this.setSize(854, 481);
 				    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				    this.setLocationRelativeTo(null);
-				    container.setLayout(new BorderLayout());
-				    bouton.addActionListener(new PlayListener());
+				    container.setLayout(new BorderLayout());				    
 				    container.add(pan, BorderLayout.CENTER);
 				    container.add(bouton, BorderLayout.SOUTH);
 				    this.setContentPane(container);
