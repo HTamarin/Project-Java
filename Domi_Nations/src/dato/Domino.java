@@ -15,7 +15,7 @@ public class Domino {
 		
 		Map<String, ArrayList<String>> mapdomino = new TreeMap<String, ArrayList<String>>();
 		try {
-			File fichier = new File("dominos.csv"); // On charge le fichier des dominos
+			File fichier = new File("src/ressources/dominos.csv"); // On charge le fichier des dominos
 
 			BufferedReader buff = new BufferedReader(new FileReader(fichier));
 
