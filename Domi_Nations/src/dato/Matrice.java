@@ -21,7 +21,8 @@ public class Matrice {
 	static int minxj4 = 4;
 	static int maxyj4 = 4;
 	static int minyj4 = 4;
-
+	static String joueur;
+	static String dominoslc;
 	public static String[][] matrix() {
 		String[][] plateau = new String[9][9];
 
@@ -70,9 +71,9 @@ public class Matrice {
 	}
 
 	public static Map<String, String[][]> ajouterDominoPlateau(ArrayList<String> tourDomino, Map<String, String[][]> plateau) {
-		String joueur = tourDomino.get(0);
-		String domino = tourDomino.get(1);
-		ArrayList<String> facedomino = Domino.domainecouronne(domino);
+		joueur = tourDomino.get(0);
+		dominoslc = tourDomino.get(1);
+		ArrayList<String> facedomino = Domino.domainecouronne(dominoslc);
 		ArrayList<Integer> caseDispo = new ArrayList<Integer>();
 		
 		String[][] plateauJoueur = plateau.get(joueur);
@@ -403,12 +404,12 @@ public class Matrice {
 		String partieDomino1 = null;
 		String partieDomino2 = null;
 		if (answer.equals("Gauche")) {
-			partieDomino1 = domino + "g";
-			partieDomino2 = domino + "d";
+			partieDomino1 = dominoslc + "g";
+			partieDomino2 = dominoslc + "d";
 		}
 		if (answer.equals("Droite")) {
-			partieDomino1 = domino + "d";
-			partieDomino2 = domino + "g";
+			partieDomino1 = dominoslc + "d";
+			partieDomino2 = dominoslc + "g";
 		}
 		System.out.println("Les emplacements disponibles sont : ");
 		System.out.println();
@@ -442,9 +443,7 @@ public class Matrice {
 		}
 		String l = String.valueOf(mapemplacement.get(emplacement) - 1);
 		ArrayList<Integer> place = mapcouple.get(l);
-		System.out.println(listeduo);
-		System.out.println("l=" + l);
-		System.out.println("emp=" + emplacement);
+
 		plateauJoueur[caseDispo.get(place.get(0))][caseDispo.get(place.get(1))] = partieDomino1;
 
 		//////////////////////////////////////////////////////

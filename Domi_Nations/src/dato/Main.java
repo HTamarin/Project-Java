@@ -45,9 +45,8 @@ public class Main {
 
 		Map<String, String[][]> plateauJoueur = null;
 		Map<String, Integer> score = new TreeMap<String, Integer>();
-		//System.out.println(CalculScore.calculScore());
+
 		int n=Player.setPlayerCount();
-		
 		Player.coloR(n);
 		
 		ArrayList<ArrayList<String>> listTour = Turn.turn(n); // renvoit la liste composé de chaque tour de jeu ( domino qu'on peut choisir ) 

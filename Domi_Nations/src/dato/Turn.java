@@ -6,7 +6,8 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class Turn {
-
+	static ArrayList<String>tourlist = new ArrayList<String>();
+	static String dominoselectionne;
 	public static ArrayList<ArrayList<String>> turn(int s) {
 		
 		int r = 0;
@@ -69,7 +70,7 @@ public class Turn {
 			 players =4;
 		 }
 			ArrayList<String> reponse = new ArrayList<String>();
-			ArrayList<String>tourlist = dominos.get(i);
+			tourlist = dominos.get(i);
 		while (k < players) {
 			String libre ="";
 			// System.out.println(random);
@@ -91,6 +92,9 @@ public class Turn {
 					}
 			}
 			String joueuractuel = joueurs.get(k);
+			
+			//CETTE PARTIE DOIT ETRE CHANGE PAR LA METHODE SELECTION GRAPHIQUE
+			
 			String answer = (String) JOptionPane.showInputDialog(null,
 					joueuractuel + " Choisissez un domino ?", "Choix", JOptionPane.QUESTION_MESSAGE, null,
 					tourtable, null);
@@ -108,9 +112,11 @@ public class Turn {
 				System.exit(0);
 			}
 
+			///////////////////////////////////////////////////////////
 			
 			//System.out.println(joueurnbr);
 			tourDominoJoueur.add(joueurnbr);
+			dominoselectionne=answer;
 			tourDominoJoueur.add(answer);
 			mapPlateau = Matrice.ajouterDominoPlateau(tourDominoJoueur,plateau);
 			reponse.add(answer);

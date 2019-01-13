@@ -4,7 +4,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class Player {
-
+static int playercount;
 	/**
 	 * Cette fonction permet de decider le nombre de joueurs
 	 * 
@@ -24,9 +24,11 @@ public class Player {
 			System.exit(0);
 		}
 
-		int NombreJoueurs = Integer.parseInt(answer);
+		int nombrejoueurs = Integer.parseInt(answer);
+		playercount=nombrejoueurs;
 		//System.out.println(NombreJoueurs);
-		return NombreJoueurs;
+		
+		return nombrejoueurs;
 	}
 
 	public static void coloR(int s) {
