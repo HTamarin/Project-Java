@@ -13,11 +13,11 @@ import javax.swing.JPanel;
 public class DominoGraoh extends JPanel {
 	public static BufferedImage doColor1;
 	public static BufferedImage doColor2;
-	private String numÈro;
+	private String numero;
 	
 	public DominoGraoh(String nom) {
-		this.numÈro=nom;
-		switch (Domino.getDomaine1(nom)) { // Definis la couleur de la premiËre moitiÈ
+		this.numero=nom;
+		switch (Domino.getDomaine1(nom)) { // Definis la couleur de la premiƒçre moiti√©
 		
 		case champs : try { doColor1 = ImageIO.read(new File("champs.png"));
 			  }
@@ -39,7 +39,7 @@ public class DominoGraoh extends JPanel {
 		  catch(Exception e) {}break;
 	}
 		
-		switch (Domino.getDomaine2(nom)) { // Couleur de la deuxiËme moitiÈ
+		switch (Domino.getDomaine2(nom)) { // Couleur de la deuxiƒçme moiti√©
 		
 		case champs : try { doColor2 = ImageIO.read(new File("champs.png"));
 			  }
@@ -72,8 +72,8 @@ public class DominoGraoh extends JPanel {
 		 g.setColor(Color.BLACK);
 		 Font f = new Font("Dialog", Font.BOLD, 24);
 		 g.setFont(f);
-		 g.drawString(Domino.getCouronne1(numÈro), 275, 40);
-		 g.drawString(Domino.getCouronne2(numÈro), 40, 40);
+		 g.drawString(Domino.getCouronne1(numero), 275, 40);
+		 g.drawString(Domino.getCouronne2(numero), 40, 40);
 
 
 		 
