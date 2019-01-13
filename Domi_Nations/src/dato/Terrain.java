@@ -74,27 +74,27 @@ public static void placeDomino2(Case c) {//Une fois qu'un domino est place
 				if (terrain[i][j].getColor()==Domino.getDomaine1(nom) && terrain[i+1][j].isFree ==true )
 				{terrain[i+1][j].setEnabled(true);terrain[i+1][j].addActionListener(new clicCase1());
 				}
-				if (terrain[i][j].getColor()==Domino.getDomaine1(nom) && terrain[i-1][j].isFree ==true )
+				else if (terrain[i][j].getColor()==Domino.getDomaine1(nom) && terrain[i-1][j].isFree ==true )
 				{terrain[i-1][j].setEnabled(true);terrain[i-1][j].addActionListener(new clicCase1());
 				}
-				if (terrain[i][j].getColor()==Domino.getDomaine1(nom) && terrain[i][j+1].isFree ==true )
+				else if (terrain[i][j].getColor()==Domino.getDomaine1(nom) && terrain[i][j+1].isFree ==true )
 				{terrain[i][j+1].setEnabled(true);terrain[i][j+1].addActionListener(new clicCase1());
 				}
-				if (terrain[i][j].getColor()==Domino.getDomaine1(nom) && terrain[i][j-1].isFree ==true )
+				else if (terrain[i][j].getColor()==Domino.getDomaine1(nom) && terrain[i][j-1].isFree ==true )
 				{terrain[i][j-1].setEnabled(true);terrain[i][j-1].addActionListener(new clicCase1());
 				}
 				
-			if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i+1][j].isFree ==true )
-			{terrain[i+1][j].setEnabled(true);{terrain[i+1][j].addActionListener(new clicCase2());}
+				else if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i+1][j].isFree ==true )
+			{terrain[i+1][j].setEnabled(true);terrain[i+1][j].addActionListener(new clicCase2());}
 			
-			if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i-1][j].isFree ==true )
+			else if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i-1][j].isFree ==true )
 			{terrain[i-1][j].setEnabled(true);terrain[i-1][j].addActionListener(new clicCase2());}
-			if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i][j+1].isFree ==true )
+			else if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i][j+1].isFree ==true )
 			{terrain[i][j+1].setEnabled(true);terrain[i][j+1].addActionListener(new clicCase2());}
-			if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i][j-1].isFree ==true )
+			else if (terrain[i][j].getColor()==Domino.getDomaine2(nom) && terrain[i][j-1].isFree ==true )
 			{terrain[i][j-1].setEnabled(true);terrain[i][j-1].addActionListener(new clicCase2());}
+			else {System.out.println("Ce domino ne peut pas etre joué il est défausser");}
 			}
-		}
 		}
 	}
 	public static void limiteTerrain() {
