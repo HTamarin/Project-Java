@@ -21,9 +21,9 @@ public class Terrain extends JPanel {
 			}
 			terrain[4][4].addActionListener(new l());
 			terrain[4][4].setEnabled(true);
-			System.out.println("Veuillez posez le château");
+			System.out.println("Veuillez posez le chÃ¢teau");
 }
-	public static void placeDomino1(Case c) {//Une fois qu'un domino est placé
+	public static void placeDomino1(Case c) {//Une fois qu'un domino est place
 		
 		if(terrain[c.getx()+1][c.gety()].isFree) {terrain[c.getx()+1][c.gety()].setEnabled(true);terrain[c.getx()+1][c.gety()].addActionListener(new clic2Case1());}
 		if(terrain[c.getx()-1][c.gety()].isFree) {terrain[c.getx()-1][c.gety()].setEnabled(true);terrain[c.getx()-1][c.gety()].addActionListener(new clic2Case1());}
@@ -31,7 +31,7 @@ public class Terrain extends JPanel {
 		if(terrain[c.getx()][c.gety()-1].isFree) {terrain[c.getx()][c.gety()-1].setEnabled(true);terrain[c.getx()][c.gety()-1].addActionListener(new clic2Case1());}
 
 	}
-public static void placeDomino2(Case c) {//Une fois qu'un domino est placé
+public static void placeDomino2(Case c) {//Une fois qu'un domino est place
 		
 		if(terrain[c.getx()+1][c.gety()].isFree) {terrain[c.getx()+1][c.gety()].setEnabled(true);terrain[c.getx()+1][c.gety()].addActionListener(new clic2Case2());}
 		if(terrain[c.getx()-1][c.gety()].isFree) {terrain[c.getx()-1][c.gety()].setEnabled(true);terrain[c.getx()-1][c.gety()].addActionListener(new clic2Case2());}
