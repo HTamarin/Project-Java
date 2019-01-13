@@ -4,12 +4,17 @@ import java.awt.Container;
 import java.util.*;
 
 import javax.swing.JOptionPane;
-
+/**
+ * 
+ * @author TamarinH
+ * Cette classe correspond au déroulement d'un tour de jeu
+ */
 public class Turn {
 	static ArrayList<String>tourlist = new ArrayList<String>();
 	static String dominoselectionne;
+	static String joueuractuel;
 	static ArrayList<ArrayList<String>> listTour = new ArrayList<ArrayList<String>>();
-	static int tour =0;
+	static int tour =1;
 	public static ArrayList<ArrayList<String>> turn(int s) {
 		
 		int r = 0;
@@ -93,7 +98,7 @@ public class Turn {
 					System.out.println(tourtable[u]+ " = " + Domino.domainecouronne(tourtable[u]) +" pris");					
 					}
 			}
-			String joueuractuel = joueurs.get(k);
+			joueuractuel = joueurs.get(k);
 			
 			//CETTE PARTIE DOIT ETRE CHANGE PAR LA METHODE SELECTION GRAPHIQUE
 			
@@ -116,7 +121,6 @@ public class Turn {
 
 			///////////////////////////////////////////////////////////
 			
-			//System.out.println(joueurnbr);
 			tourDominoJoueur.add(joueurnbr);
 			dominoselectionne=answer;
 			tourDominoJoueur.add(answer);
