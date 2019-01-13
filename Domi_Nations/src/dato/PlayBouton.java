@@ -44,7 +44,7 @@ public class PlayBouton extends JButton implements MouseListener{
 		  
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
-			EcranJeu.lancerLeJeu();
+	
 		}
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
