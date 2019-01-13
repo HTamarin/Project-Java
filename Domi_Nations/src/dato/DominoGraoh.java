@@ -17,7 +17,7 @@ public class DominoGraoh extends JPanel {
 	
 	public DominoGraoh(String nom) {
 		this.numero=nom;
-		switch (Domino.getDomaine1(nom)) { // Definis la couleur de la premičre moitie
+		switch (Domino.getDomaine1(nom)) { // Definis la couleur de la premiere moitie
 		
 		case "champs" : try { doColor1 = ImageIO.read(new File("champs.png"));
 			  }

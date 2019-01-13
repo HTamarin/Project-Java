@@ -117,6 +117,17 @@ public class Domino {
 		domainecouronne.add(mapDominos.get(a).get(3));
 		return domainecouronne;
 	}
-	
+	public static String getCouronne1(String nom) {
+		return domainecouronne(nom).get(0);
+	}
+	public static String getCouronne2(String nom) {
+		return domainecouronne(nom).get(2);
+	}
+	public static String getDomaine1(String nom) {
+		return domainecouronne(nom).get(1);
+	}
+	public static String getDomaine2(String nom) {
+		return domainecouronne(nom).get(3);
+	}
 
 }

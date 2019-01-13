@@ -1,3 +1,4 @@
+package dato;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -14,7 +15,11 @@ import javax.swing.JButton;
 public class PlayBouton extends JButton implements MouseListener{
 	
 	
-	 private String name;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String name;
 	 private Image img;
 		
 		  public PlayBouton(String str){
@@ -25,7 +30,7 @@ public class PlayBouton extends JButton implements MouseListener{
 		  
 		  
 		  try {
-		      img = ImageIO.read(new File("yellow-rectangle-button-hi.png"));
+		      img = ImageIO.read(new File("src/yellow-rectangle-button-hi.png"));
 		    } catch (IOException e) {
 		      e.printStackTrace();
 		    }

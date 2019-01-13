@@ -395,7 +395,6 @@ public class Matrice {
 			Answer.add(answers[j]);
 		}
 		System.out.println("Rappel : " + facedomino );
-		System.out.println();
 		String answer = (String) JOptionPane.showInputDialog(null, "Quelle partie du domino voulez-vous poser ?",
 				"Choix", JOptionPane.QUESTION_MESSAGE, null, answers, null);
 		if (Turn.isNullOrEmpty(answer)) {
@@ -412,7 +411,6 @@ public class Matrice {
 			partieDomino2 = dominoslc + "g";
 		}
 		System.out.println("Les emplacements disponibles sont : ");
-		System.out.println();
 		int k = 1;
 		for (int i = 0; i < caseDispo.size(); i = i + 2) {
 			System.out.println("Emplacement " + String.valueOf(k) + " = " + "x:" + String.valueOf((caseDispo.get(i+1)+1))

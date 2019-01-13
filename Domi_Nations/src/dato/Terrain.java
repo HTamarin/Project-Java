@@ -21,7 +21,7 @@ public class Terrain extends JPanel {
 			}
 			terrain[4][4].addActionListener(new l());
 			terrain[4][4].setEnabled(true);
-			System.out.println("Veuillez posez le château");
+			System.out.println("Veuillez posez le chateau");
 }
 	public static void placeDomino1(Case c) {//Une fois qu'un domino est place
 		
