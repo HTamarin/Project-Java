@@ -19,44 +19,44 @@ public class DominoGraoh extends JPanel {
 		this.numero=nom;
 		switch (Domino.getDomaine1(nom)) { // Definis la couleur de la premičre moitie
 		
-		case champs : try { doColor1 = ImageIO.read(new File("champs.png"));
+		case "champs" : try { doColor1 = ImageIO.read(new File("champs.png"));
 			  }
 		  catch(Exception e) {}break;
-		case foret : try { doColor1 = ImageIO.read(new File("foret.png"));
+		case "foret" : try { doColor1 = ImageIO.read(new File("foret.png"));
 		  }
 		  catch(Exception e) {}break;
-		case mer : try { doColor1 = ImageIO.read(new File("mer.png"));
+		case "mer" : try { doColor1 = ImageIO.read(new File("mer.png"));
 		  }
 		  catch(Exception e) {}break;
-		case prairie : try { doColor1 = ImageIO.read(new File("prairie.png"));
+		case "prairie" : try { doColor1 = ImageIO.read(new File("prairie.png"));
 		  }
 		  catch(Exception e) {}break;
-		case mine : try { doColor1 = ImageIO.read(new File("mine.png"));
+		case "mine" : try { doColor1 = ImageIO.read(new File("mine.png"));
 		  }
 		  catch(Exception e) {}break;
-		case montagne : try { doColor1 = ImageIO.read(new File("montagne.png"));
+		case "montagne" : try { doColor1 = ImageIO.read(new File("montagne.png"));
 		  }
 		  catch(Exception e) {}break;
 	}
 		
 		switch (Domino.getDomaine2(nom)) { // Couleur de la deuxieme moitie
 		
-		case champs : try { doColor2 = ImageIO.read(new File("champs.png"));
+		case "champs" : try { doColor2 = ImageIO.read(new File("champs.png"));
 			  }
 		  catch(Exception e) {}break;
-		case foret : try { doColor2 = ImageIO.read(new File("foret.png"));
+		case "foret" : try { doColor2 = ImageIO.read(new File("foret.png"));
 		  }
 		  catch(Exception e) {}break;
-		case mer : try { doColor2 = ImageIO.read(new File("mer.png"));
+		case "mer" : try { doColor2 = ImageIO.read(new File("mer.png"));
 		  }
 		  catch(Exception e) {}break;
-		case prairie : try { doColor2 = ImageIO.read(new File("prairie.png"));
+		case "prairie" : try { doColor2 = ImageIO.read(new File("prairie.png"));
 		  }
 		  catch(Exception e) {}break;
-		case mine : try { doColor2 = ImageIO.read(new File("mine.png"));
+		case "mine" : try { doColor2 = ImageIO.read(new File("mine.png"));
 		  }
 		  catch(Exception e) {}break;
-		case montagne : try { doColor2 = ImageIO.read(new File("montagne.png"));
+		case "montagne" : try { doColor2 = ImageIO.read(new File("montagne.png"));
 		  }
 		  catch(Exception e) {}break;
 	}
